@@ -25,11 +25,9 @@ app.use("/v1", v1Router);
 
 db.then(() => {
   console.log("Connected to MongoDB");
-  if (process.env.NODE_ENV === "development") {
-    app.listen(port, () => {
-      console.log(`Server running in development mode at http://localhost:${port}`);
-    });
-  }
+  app.listen(port, () => {
+    console.log(`Server running in development mode at http://localhost:${port}`);
+  });
 }).catch((err) => {
   console.error("Failed to connect to MongoDB:", err);
 });
