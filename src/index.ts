@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("welcome to api mongo ts");
+  res.send("welcome to api mongo ts server");
 });
 
 app.use("/v1", v1Router);
