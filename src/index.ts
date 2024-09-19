@@ -6,9 +6,6 @@ import cors from "cors";
 
 import v1Router from "./v1/router";
 
-export const MONGO_URL =
-  "mongodb+srv://mkhotami:mkhotami@mydbcluster.zlvfqus.mongodb.net/api-mongo-ts?retryWrites=true&w=majority";
-
 const app = express();
 
 app.use(cors());
@@ -23,6 +20,8 @@ app.get("/", (req, res) => {
 
 app.use("/v1", v1Router);
 
-app.listen(8080, () => {
-  console.log("Server is running on http://localhost:8080");
-});
+// app.listen(8080, () => {
+//   console.log("Server is running on http://localhost:8080");
+// });
+
+export default app;
