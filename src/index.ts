@@ -3,10 +3,13 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
+import "dotenv/config";
+import db from "./config";
 
 import v1Router from "./v1/router";
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -15,13 +18,20 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.send("welcome to api mongo ts");
 });
 
 app.use("/v1", v1Router);
 
-// app.listen(8080, () => {
-//   console.log("Server is running on http://localhost:8080");
-// });
+db.then(() => {
+  console.log("Connected to MongoDB");
+  if (process.env.NODE_ENV === "development") {
+    app.listen(port, () => {
+      console.log(`Server running in development mode at http://localhost:${port}`);
+    });
+  }
+}).catch((err) => {
+  console.error("Failed to connect to MongoDB:", err);
+});
 
 export default app;

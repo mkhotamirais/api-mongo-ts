@@ -9,7 +9,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const compression_1 = __importDefault(require("compression"));
 const cors_1 = __importDefault(require("cors"));
 require("dotenv/config");
-const config_1 = __importDefault(require("./config"));
+const config_1 = __importDefault(require("../config"));
 const router_1 = __importDefault(require("./v1/router"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.use("/v1", router_1.default);
 config_1.default.then(() => {
     console.log("Connected to MongoDB");
+    // Only listen on port if in development mode
     if (process.env.NODE_ENV === "development") {
         app.listen(port, () => {
             console.log(`Server running in development mode at http://localhost:${port}`);
