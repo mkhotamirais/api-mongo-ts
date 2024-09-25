@@ -66,7 +66,7 @@ export const createProduct = async (req: Request, res: Response) => {
     const dupName = await Products.findOne({ name });
     if (dupName) return res.status(409).json({ error: "Duplicate name!" });
 
-    req.body.user = (req as any).user._id;
+    req.body.user = (req as any).user?.id;
     await Products.create(req.body);
     res.status(201).json({ message: `Post ${name} success` });
   } catch (error) {
