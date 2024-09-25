@@ -10,15 +10,15 @@ import { createTag, deleteTag, readTagById, readTags, updateTag } from "./tagCon
 router.post("/signup", signup);
 router.patch("/signin", signin);
 
-router.route("/product").get(readProducts).post(isLogin, isAdmin, createProduct);
-router.route("/category").get(readCategories).post(isLogin, isAdmin, createCategory);
-router.route("/tag").get(readTags).post(isLogin, isAdmin, createTag);
+router.route("/product").get(readProducts).post(createProduct);
+router.route("/category").get(readCategories).post(createCategory);
+router.route("/tag").get(readTags).post(createTag);
 
-router.use(isLogin);
+// router.use(isLogin);
 router.route("/me").get(getMe).patch(updateMe).delete(deleteMe);
 router.patch("/signout", signout);
 
-router.use(isAdmin);
+// router.use(isAdmin);
 router.route("/product/:id").get(readProductById).patch(updateProduct).delete(deleteProduct);
 router.route("/category/:id").get(readCategoryById).patch(updateCategory).delete(deleteCategory);
 router.route("/tag/:id").get(readTagById).patch(updateTag).delete(deleteTag);
