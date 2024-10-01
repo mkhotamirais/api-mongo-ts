@@ -8,5 +8,5 @@ export const allowedOrigins = [
   "https://tamiweb.vercel.app",
   "https://tamimern.vercel.app",
   "https://google.com",
-  "https://vite-shop-neon.vercel.app",
+  "https://vite-shop-tami.vercel.app",
 ];
